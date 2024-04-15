@@ -1,6 +1,6 @@
 from BiteMatchEngine import BiteMatchEngine
 
-
+# This class is used for...
 def main():
     engine = BiteMatchEngine()
 
