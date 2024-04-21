@@ -26,6 +26,28 @@ class Restaurant:
         self.address = str(address)
         self.website = str(website)
 
+    # Getter methods
+    def get_name(self):
+        return self.name
+
+    def get_description(self):
+        return self.description
+
+    def get_phone_num(self):
+        return self.phone_num
+
+    def get_price_level(self):
+        return str(self.price_level)
+
+    def get_rating(self):
+        return self.rating
+
+    def get_address(self):
+        return self.address
+
+    def get_website(self):
+        return self.website
+
     def display_restaurant_details(self):
         try:
             print(
@@ -43,3 +65,5 @@ class Restaurant:
                 + self.rating + " Stars")
         except TypeError as e:
             print("An error occurred while displaying restaurant details:", e)
+
+    # Search restaurants by name through restaurant array and delete any of the same

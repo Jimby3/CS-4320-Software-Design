@@ -8,14 +8,18 @@ google_places = GooglePlaces(api_key)
 
 
 class GoogleApiEngine:
-    def __init__(self, zipcode, restaurant_type):
-        self.zipcode = zipcode
+    def __init__(self, location, restaurant_type):
+        self.location = location
         self.restaurant_type = restaurant_type
 
     def makeAPIRequest(self):
-        query_result = google_places.nearby_search(
-            location=self.zipcode, keyword=self.restaurant_type,
-            radius=3200, types=[types.TYPE_FOOD])
+        try:
+            query_result = google_places.nearby_search(
+            location=self.location, keyword=self.restaurant_type,
+            radius=5000, types=[types.TYPE_FOOD])
+        except ValueError or TypeError:
+            print("Unable to find location, quitting app...")
+            quit()
 
         restaurant_list = NotSortedRestaurants()
 
@@ -28,6 +32,7 @@ class GoogleApiEngine:
 
             restaurant_list.add_to_array(restaurant)
 
+        restaurant_list.remove_duplicates()
         return restaurant_list
 
         # # Access details directly as a dictionary

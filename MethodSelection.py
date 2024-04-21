@@ -15,6 +15,8 @@ def select_restaurant_type():
         restaurant_type = "Fast Food"
     elif selection == '2':
         restaurant_type = "Sit Down"
+    elif selection == '3':
+        restaurant_type = input("Enter the type of restaurant you would like to eat at: ")
     return restaurant_type
 
 
@@ -30,3 +32,4 @@ def select_decision_type():
             valid = True
     selection = int(selection)
     return selection
+
