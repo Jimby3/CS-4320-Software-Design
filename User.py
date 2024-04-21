@@ -15,10 +15,6 @@ class User:
                 # Remove leading and trailing whitespace from each name and filter out blank names
                 self.doNotRecommendRestaurants = [name.strip() for name in restaurant_names if name.strip()]
 
-                # Print each non-blank name
-                for name in self.doNotRecommendRestaurants:
-                    print(name)
-
         except FileNotFoundError:
             print("File not found.")
 

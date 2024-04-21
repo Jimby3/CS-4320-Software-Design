@@ -15,7 +15,7 @@ class BiteMatchEngine:
         user = User.User()
 
         if user.location == "":
-            user.set_location(input("Please Enter Your Location:\n"))
+            user.set_location(input("Please Enter Your Location (Address, Zipcode, or City):\n"))
 
         else:
 
