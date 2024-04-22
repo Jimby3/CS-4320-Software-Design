@@ -1,5 +1,3 @@
-import Restaurant
-
 # this class is where the restaurants will first live after pulling them down from the API
 class NotSortedRestaurants:
     def __init__(self):

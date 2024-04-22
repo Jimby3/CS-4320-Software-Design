@@ -1,5 +1,4 @@
 # This class is used for...
-import string
 
 
 class Restaurant:

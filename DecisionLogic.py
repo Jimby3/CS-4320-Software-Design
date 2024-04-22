@@ -1,5 +1,4 @@
 import random
-from Restaurant import Restaurant
 
 
 # this function will hold the logic for randomly choosing a restaurant from an array

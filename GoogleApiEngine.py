@@ -15,8 +15,8 @@ class GoogleApiEngine:
     def makeAPIRequest(self):
         try:
             query_result = google_places.nearby_search(
-            location=self.location, keyword=self.restaurant_type,
-            radius=5000, types=[types.TYPE_FOOD])
+                location=self.location, keyword=self.restaurant_type,
+                radius=3200, types=[types.TYPE_FOOD])
         except ValueError or TypeError:
             print("Unable to find location, quitting app...")
             quit()
@@ -58,7 +58,7 @@ class GoogleApiEngine:
 #
 #         lat_lng  -- A dict containing the following keys: lat, lng (default None)
 #
-#         location -- A human readable location, e.g 'London, England' (default None)
+#         location -- A human-readable location, e.g 'London, England' (default None)
 #
 #         name     -- A term to be matched against the names of the Places.
 #                     Results will be restricted to those containing the passed name value. (default None)
@@ -73,7 +73,7 @@ class GoogleApiEngine:
 #         rankby   -- Specifies the order in which results are listed:
 #                     'prominence' (default) or 'distance' (imply no radius argument)
 #
-#         sensor   -- Indicates whether or not the Place request came from a device
+#         sensor   -- Indicates whether the Place request came from a device
 #                     using a location sensor (default False)
 #
 #         type     -- An optional type used for restricting the results to Places (default None)
