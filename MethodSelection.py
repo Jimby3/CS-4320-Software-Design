@@ -3,9 +3,9 @@ def select_restaurant_type():
     selection = 0
     valid = False
     while not valid:
-        selection = input("Would you like to eat at a Fast Food or a Sit Down restaurant?\n"
-                              "1: Fast Food\n2: Sit Down\nEnter Choice: ")
-        if selection != '1' and selection != '2':
+        selection = input("Would you like to eat at a Fast Food, Sit Down restaurant, or choose your own category?\n"
+                              "1: Fast Food\n2: Sit Down\n3: Own Choice\nEnter Choice: ")
+        if selection != '1' and selection != '2' and selection != '3':
             print("\n\n\nInvalid Selection, Please try again:\n\n")
         else:
             valid = True
