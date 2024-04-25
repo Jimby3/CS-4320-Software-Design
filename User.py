@@ -1,6 +1,6 @@
 from RestaurantLists.NotSortedRestaurants import NotSortedRestaurants
 
-
+# this class is used for holding user's information in regards to our application
 class User:
     def __init__(self):
         self.likedRestaurants = []

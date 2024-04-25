@@ -3,10 +3,11 @@ from googleplaces import GooglePlaces, types
 from RestaurantLists.NotSortedRestaurants import NotSortedRestaurants
 from Restaurant import Restaurant
 
-api_key = 'AIzaSyDbQ9LeTfjQjIwnEdkw4Q2gDihco9gUj0U'
+
+api_key = 'PUT_YOUR_API_KEY_HERE'
 google_places = GooglePlaces(api_key)
 
-
+# this class handles the API calling for out app.
 class GoogleApiEngine:
     def __init__(self, location, restaurant_type):
         self.location = location
@@ -14,35 +15,42 @@ class GoogleApiEngine:
 
     def makeAPIRequest(self):
         try:
+            # Attempt to make a nearby search API request using Google Places API.
             query_result = google_places.nearby_search(
                 location=self.location, keyword=self.restaurant_type,
                 radius=3200, types=[types.TYPE_FOOD])
         except ValueError or TypeError:
+            # If an error occurs (ValueError or TypeError), print a message and quit the application.
             print("Unable to find location, quitting app...")
             quit()
 
+        # Create an empty list to store restaurant objects.
         restaurant_list = NotSortedRestaurants()
 
+        # Iterate through each place returned by the API query result.
         for place in query_result.places:
+            # Retrieve detailed information about the place.
             place.get_details()
 
-            restaurant = Restaurant(place.name, place.details.get('editorial_summary', {}).get('overview'),
-                                    place.details.get('formatted_phone_number'), place.details.get('price_level'),
-                                    place.details.get('rating'), place.formatted_address, place.details.get('website'))
+            # Create a Restaurant object using retrieved details.
+            restaurant = Restaurant(
+                place.name,
+                place.details.get('editorial_summary', {}).get('overview'),
+                place.details.get('formatted_phone_number'),
+                place.details.get('price_level'),
+                place.details.get('rating'),
+                place.formatted_address,
+                place.details.get('website')
+            )
 
+            # Add the created restaurant object to the list.
             restaurant_list.add_to_array(restaurant)
 
+        # Remove any duplicate restaurants from the list.
         restaurant_list.remove_duplicates()
-        return restaurant_list
 
-        # # Access details directly as a dictionary
-        # print(place.name)
-        # print(place.details.get('editorial_summary', {}).get('overview'))
-        # print(place.details.get('formatted_phone_number'))
-        # print(place.details.get('price_level'))
-        # print(place.details.get('rating'))
-        # print(place.details.get('website'))
-        # print(place.formatted_address)
+        # Return the list of restaurants.
+        return restaurant_list
 
 # API Legend
 

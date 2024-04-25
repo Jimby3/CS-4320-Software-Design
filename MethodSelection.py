@@ -1,4 +1,5 @@
-# This class is used for managing the decisions the user makes in their choice
+# This file is used for managing the decisions the user makes on how they want their food
+
 def select_restaurant_type():
     selection = 0
     valid = False

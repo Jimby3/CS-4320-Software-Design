@@ -1,17 +1,22 @@
-# this class is where the restaurants will first live after pulling them down from the API
+# this class is where the restaurants will first live after pulling them down from the API, with methods to remove
+# duplicates and blacklists
 class NotSortedRestaurants:
     def __init__(self):
         self.not_sorted_restaurants = []
 
+    # getting the array
     def get_not_sorted(self):
         return self.not_sorted_restaurants
 
+    # appending to the array
     def add_to_array(self, restaurant):
         self.not_sorted_restaurants.append(restaurant)
 
+    # removing from array by name
     def remove_from_array(self, restaurant):
         self.not_sorted_restaurants.remove(restaurant)
 
+    # removing duplicate names from array
     def remove_duplicates(self):
         checked_restaurants = set()
         unique_restaurants = []
@@ -21,6 +26,7 @@ class NotSortedRestaurants:
                 unique_restaurants.append(restaurant)
         self.not_sorted_restaurants = unique_restaurants
 
+    # read in info from file that has blacklisted restaurants and remove them
     def remove_DNR_restaurants(self, user):
         # Create a set of restaurant names to remove for faster lookup
         DNR_names = set(user.doNotRecommendRestaurants)

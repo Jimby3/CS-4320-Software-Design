@@ -1,6 +1,4 @@
-# This class is used for...
-
-
+# This class is used for holding the data of each restaurant
 class Restaurant:
     def __init__(self, name, description, phone_num, price_level, rating, address, website):
 

@@ -20,11 +20,13 @@ def random_decision_logic(user):
     # Return the retrieved element
     return random_element, restaurant_array
 
-
 def choice_decision_logic(user):
+    # This function is designed to help a user make decisions about restaurants.
     while True:
+        # Retrieve restaurants that the user hasn't sorted yet or restaurants they've liked.
         restaurant_array = user.get_not_sorted().get_not_sorted() or user.get_restaurant_likes()
 
+        # If there's only one restaurant left, like it and possibly remove it from the unsorted list.
         if len(restaurant_array) <= 1:
             if len(restaurant_array) == 1:
                 user.like_restaurant(restaurant_array[0])
@@ -35,48 +37,50 @@ def choice_decision_logic(user):
             else:
                 return
         else:
-
+            # Randomly select two restaurants from the array.
             rest1 = random.choice(restaurant_array)
             restaurant_array.remove(rest1)
             rest2 = random.choice(restaurant_array)
             restaurant_array.remove(rest2)
 
+            # Display both restaurants for comparison.
             displayBothRestaurantsSimple(rest1, rest2)
 
-
+            # Prompt user to make a simple decision based on displayed options.
             decision = promptSimpleOptions()
 
+            # Process user decision.
             if decision == 1:
                 user.like_restaurant(rest1)
             elif decision == 2:
                 user.like_restaurant(rest2)
             else:
+                # If user wants more details, display both restaurants in more detail.
                 displayBothRestaurantsMoreDetails(rest1, rest2)
+                # Prompt user to make a more complex decision.
                 decision = promptComplexOptions()
+                # Process user's complex decision.
                 if decision == 1:
                     user.like_restaurant(rest1)
-
                 elif decision == 2:
                     user.like_restaurant(rest2)
-
                 elif decision == 3:
                     user.dislike_restaurant(rest1)
                     user.not_sorted_restaurants.add_to_array(rest2)
-
                 elif decision == 4:
                     user.dislike_restaurant(rest2)
                     user.not_sorted_restaurants.add_to_array(rest1)
-
                 elif decision == 5:
                     user.dislike_restaurant(rest1)
                     user.dislike_restaurant(rest2)
-
                 elif decision == 6:
-                    num = random.randint(1,2)
+                    # Randomly like one of the restaurants.
+                    num = random.randint(1, 2)
                     if num == 1:
                         user.like_restaurant(rest1)
                     else:
                         user.like_restaurant(rest2)
+
 
 
 
@@ -151,7 +155,7 @@ def promptComplexOptions():
         else:
             print("Invalid selection. Try again. \n")
 
-# this function allows for users to print two strings that are long into multiple lines next to eachother for
+# this function allows for users to print two strings that are long into multiple lines next to each other for
 # better formatting
 def print_long_items(item1, item2):
 

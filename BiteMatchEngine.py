@@ -4,16 +4,17 @@ from MethodSelection import select_restaurant_type, select_decision_type
 import GoogleApiEngine
 
 
-# This class is used for...
+# This class is used for running the application and holding the core functionality of the application
 class BiteMatchEngine:
 
     def __init__(self):
         print()
 
+    # runs the application
     def start_engine(self):
 
+        # create a user and get a location
         user = User.User()
-
         if user.location == "":
             user.set_location(input("Please Enter Your Location (Address, Zipcode, or City):\n"))
 
@@ -31,6 +32,8 @@ class BiteMatchEngine:
             if selection == 'y':
                 user.set_location(input("Please Enter Your Location:\n"))
 
+
+        # get restaurant and decision types
         restaurant_type = select_restaurant_type()
 
         decision_type = select_decision_type()
@@ -42,10 +45,12 @@ class BiteMatchEngine:
         user.set_not_sorted(api_engine.makeAPIRequest())
         user.get_not_sorted().remove_DNR_restaurants(user)
 
+        # if no restaurants, stop app
         if len(user.get_not_sorted().get_not_sorted()) == 0:
             print("No Restaurants Found.")
             self.stop_engine(user)
 
+        # if random, then do random logic
         if decision_type == 1:
             do_over = True
             while do_over:
@@ -73,6 +78,7 @@ class BiteMatchEngine:
                     do_over = False
 
 
+        # if decision then do decision logic
         elif decision_type == 2:
 
             chosen = choice_decision_logic(user)
@@ -85,6 +91,8 @@ class BiteMatchEngine:
 
         self.stop_engine(user)
 
+
+    # stops the application and saves data in DB
     def stop_engine(self, user):
         print("\n\nStopping app...")
 
