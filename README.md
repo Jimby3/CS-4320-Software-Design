@@ -7,7 +7,7 @@
 5. Run main
 6. Voila! Your application should now be up and running.
 
-1. Introduction To Application
+**Introduction To Application**
 BiteMatch is a food decision tool designed to assist users in overcoming decision paralysis when choosing where to eat. It offers a decision-making process that enables users to select between two restaurant options until they reach their desired choice or receive a random restaurant recommendation based on their preferences.
 
 **Features**
