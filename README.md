@@ -1,11 +1,12 @@
 **Steps to run our application:**
 
 1. Pull down the source code from this repository
-2. Install python library (python-google-places) if you want to read more: https://github.com/slimkrazy/python-google-places
-3. Go to https://developers.google.com/maps/documentation/places/web-service/overview and create a google places account so you can get an API key
-4. In the file googleApiEngine, replace "PUT_YOUR_API_KEY_HERE" with your actual API key
-5. Run main
-6. Voila! Your application should now be up and running.
+2. Ensure Python is installed on your machine
+3. Install python library (python-google-places) if you want to read more: https://github.com/slimkrazy/python-google-places
+4. Go to https://developers.google.com/maps/documentation/places/web-service/overview and create a google places account so you can get an API key
+5. In the file googleApiEngine, replace "PUT_YOUR_API_KEY_HERE" with your actual API key
+6. Run main
+7. Voila! Your application should now be up and running.
 
 **Introduction To Application**
 - BiteMatch is a food decision tool designed to assist users in overcoming decision paralysis when choosing where to eat. It offers a decision-making process that enables users to select between two restaurant options until they reach their desired choice or receive a random restaurant recommendation based on their preferences.
